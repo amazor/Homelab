@@ -1,0 +1,21 @@
+version: "3.4"
+services:
+  expressvpn:
+    container_name: torrent-expressvpn
+    image: polkaned/expressvpn:latest
+    environment:
+      - ACTIVATION_CODE=${EXPRESSVPN_ACTIVATION_CODE}
+      # - SERVER={% LOCATION/ALIAS/COUNTRY %}
+      # - PREFERRED_PROTOCOL={% protocol %}
+      # - LIGHTWAY_CIPHER={% lightway-cipher %}
+    cap_add:
+      - NET_ADMIN
+    devices: 
+      - /dev/net/tun
+    stdin_open: true
+    tty: true
+    command: /bin/bash
+    privileged: true
+    restart: unless-stopped
+    ports:
+      - 8112:8112

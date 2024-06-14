@@ -1,0 +1,11 @@
+version: "3.8"
+
+include:
+  - path: ${TAILSCALE}/compose.yaml
+  # - path: ${REVERSE_VPN}/compose.yaml
+
+
+
+
+# services:
+  # You can define additional services here or override configurations from included files.

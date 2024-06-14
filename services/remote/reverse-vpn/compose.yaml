@@ -1,0 +1,22 @@
+version: "3.7"
+services:
+  reverse_vpn:
+    image: tailscale/tailscale:latest
+    container_name: reverse-vpn-tailscale
+    hostname: mazora-zimaboard
+    network_mode: "host"
+    environment:
+      - TS_AUTHKEY=tskey-auth-kXgeykMNQX11CNTRL-bnr9s8hHC4bZCj64pUU34bPATPB9wjjCL
+      - TS_STATE_DIR=/var/lib/tailscale
+      - TS_USERSPACE=false
+      # - TS_ROUTES=172.18.0.0/24
+      - TS_EXTRA_ARGS=--ssh
+    volumes:
+      - ${REVERSE_VPN_CONFIG_DATA}/state:/var/lib/tailscale
+      - /dev/net/tun:/dev/net/tun
+    cap_add:
+      - net_admin
+      - sys_module
+    restart: unless-stopped
+    labels:
+      - com.dnsdock.ignore=true

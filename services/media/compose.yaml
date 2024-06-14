@@ -1,0 +1,6 @@
+version: "3.8"
+
+include:
+  - path: ${FLARESOLVERR}/compose.yaml
+  - path: ${PROWLARR}/compose.yaml
+  - path: ${RADARR}/compose.yaml

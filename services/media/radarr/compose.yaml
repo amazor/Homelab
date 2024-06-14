@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: media-radarr
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ${RADARR_CONFIG_DATA}:/config
+      - ${DOCKER_DATA_MEDIA}:/downloads # container directory name must match directory name in torrent client
+    ports:
+      - 7878:7878
+    restart: unless-stopped

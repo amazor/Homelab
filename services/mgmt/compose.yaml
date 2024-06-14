@@ -1,0 +1,7 @@
+version: "3.8"
+
+include:
+  # - path: ${DOCKGE}/compose.yaml
+  - path: ${AUTHENTIK}/compose.yaml
+  - path: ${ORGANIZR}/compose.yaml
+  - path: ${HOMEPAGE}/compose.yaml

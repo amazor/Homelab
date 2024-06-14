@@ -1,0 +1,18 @@
+version: "3.4"
+services:
+  deluge:
+    container_name: torrent-deluge
+    image: linuxserver/deluge:latest
+    restart: unless-stopped
+    network_mode: service:expressvpn
+    environment:
+      - PUID=${PUID} # default user id, defined in .env
+      - PGID=${PGID} # default group id, defined in .env
+      - TZ=${TZ} # timezone, defined in .env
+    volumes:
+      - ${DOCKER_DATA_MEDIA}:/downloads # container directory name must match directory name in *arr suite
+      - ${DELUGE_CONFIG_DATA}:/config
+    labels:
+      - com.dnsdock.ignore=true
+    depends_on:
+      - expressvpn

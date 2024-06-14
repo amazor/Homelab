@@ -1,0 +1,19 @@
+version: "3.8"
+
+include:
+  - path: ${DOCKER_SERVICE_MGMT}/compose.yaml
+  - path: ${DOCKER_SERVICE_TORRENT}/compose.yaml
+  - path: ${DOCKER_SERVICE_MEDIA}/compose.yaml
+  - path: ${DOCKER_SERVICE_REMOTE}/compose.yaml
+
+networks:
+  # server_network:
+  default:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 172.18.0.0/24
+
+
+# services:
+  # You can define additional services here or override configurations from included files.

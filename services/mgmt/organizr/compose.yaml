@@ -1,0 +1,17 @@
+version: "3.6"
+services:
+    organizr:
+        container_name: mgmt-organizr
+        hostname: organizr
+        image: organizr/organizr:latest
+        restart: unless-stopped
+        ports:
+            - 80:80
+        volumes:
+            - ${ORGANIZR_CONFIG_DATA}:/config
+        environment:
+            - PUID=${PUID}
+            - PGID=${PGID}
+            - TZ=${TZ}
+        # labels:
+        #     - com.dnsdock.alias=dockge

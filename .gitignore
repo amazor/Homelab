@@ -1,0 +1,7 @@
+# TODO Should be kept, but because there is sensitive info, will keep out for now until i come up with a solution
+.env
+
+# Ignore everything in the data directory
+# TODO should be replaced with each directory containing a 
+# .gitignore with '*' and '!.gitignore'. This will keep the empty directory structure
+data/**
